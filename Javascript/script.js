@@ -42,7 +42,23 @@ let NewGame = false;
 /////////////////  Game Functions  /////////////////
 
 ////// Active Player Logic //////
+const toggleActivePlayer = () => {
+  playerOneNameBanner.classList.toggle("info-player-highlight");
+  playerTwoNameBanner.classList.toggle("info-player-highlight");
+};
 
+const removeActivePlayer = () => {
+  playerOneNameBanner.classList.remove("info-player-highlight");
+  playerTwoNameBanner.classList.remove("info-player-highlight");
+};
+
+const findNextPlayer = () => {
+  if (bannerToAddClassTo === playerOneNameBanner) {
+    return playerTwoNameBanner.classList.add("info-player-highlight");
+  } else {
+    return playerOneNameBanner.classList.add("info-player-highlight");
+  }
+};
 ////// Square Event Listener //////
 
 function addSquareClick() {
@@ -74,11 +90,13 @@ const incrementMove = () => {
   move++;
 
   if (move % 2 !== 0) {
+    toggleActivePlayer();
     currentPlayer = players.playerOne.name;
     nextPlayer = players.playerTwo.name;
     currentImg = "cross";
     infoText.innerHTML = `${currentPlayer}'s Turn`;
   } else {
+    toggleActivePlayer();
     currentPlayer = players.playerTwo.name;
     nextPlayer = players.playerOne.name;
     currentImg = "circle";
@@ -121,6 +139,25 @@ const checkPlayerWin = () => {
     )
       ? players.playerOne
       : players.playerTwo;
+
+    const bannerToAddClassTo =
+      winner === players.playerOne ? playerOneNameBanner : playerTwoNameBanner;
+
+    removeActivePlayer();
+    bannerToAddClassTo.classList.add("player-win");
+    infoText.classList.add("win-text");
+
+    setTimeout(() => {
+      bannerToAddClassTo.classList.remove("player-win");
+      infoText.classList.remove("win-text");
+
+      if (bannerToAddClassTo === playerOneNameBanner) {
+        playerTwoNameBanner.classList.add("info-player-highlight");
+      } else {
+        playerOneNameBanner.classList.add("info-player-highlight");
+      }
+    }, 3500);
+
     winner.wins++;
     updateScores();
     playerWon();
@@ -149,7 +186,13 @@ const checkForTie = () => {
   });
 
   if (allSquaresFilled && !NewGame) {
+    removeActivePlayer();
+    infoText.classList.add("tie-text");
     infoText.innerHTML = "It's a tie!";
+
+    setTimeout(() => {
+      infoText.classList.remove("tie-text");
+    }, 3500);
 
     allSquares.forEach((square) => {
       square.classList.add("tie");
@@ -178,7 +221,7 @@ const continueGame = () => {
   removeSquareClick();
   setTimeout(() => {
     reset();
-  }, 2000);
+  }, 3600);
 };
 
 const restartGame = () => {
@@ -194,6 +237,12 @@ const reset = () => {
   addSquareClick();
   NewGame = false;
   infoText.innerHTML = `${currentPlayer}'s turn to start`;
+
+  if (currentPlayer === players.playerOne.name) {
+    playerOneNameBanner.classList.add("info-player-highlight");
+  } else if (currentPlayer === players.playerTwo.name) {
+    playerTwoNameBanner.classList.add("info-player-highlight");
+  }
 };
 
 const startGame = () => {
@@ -239,9 +288,11 @@ const startGame = () => {
 
     modal.style.display = "none";
     gameBtn.innerHTML = "Restart Game";
+    playerOneNameBanner.classList.add("info-player-highlight");
     addSquareClick();
     reset();
   });
 };
 
 startGame();
+// addSquareClick();
