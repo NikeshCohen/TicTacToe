@@ -1,0 +1,28 @@
+@media (max-width: 68em) {
+  .modal-content {
+    height: 40%;
+    width: 40%;
+  }
+}
+
+@media (max-width: 42em) {
+  .modal-content {
+    height: 45%;
+    width: 50%;
+  }
+}
+
+@media (max-width: 27em) {
+  html {
+    font-size: 50%;
+  }
+
+  .grid {
+    width: 35rem;
+    height: 35rem;
+  }
+
+  .modal-content {
+    width: 80%;
+  }
+}

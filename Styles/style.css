@@ -1,0 +1,222 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"); */
+
+:root {
+  --win: rgb(115, 255, 97);
+  --light-color: rgb(255, 245, 224);
+  --light-shade: rgb(255, 105, 105);
+  -dark-shade: rgb(187, 37, 37);
+  --accent-color: rgb(20, 30, 70);
+  --body-background: linear-gradient(
+    14deg,
+    rgb(173, 112, 112) 0%,
+    rgba(20, 30, 70, 1) 100%
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Rubik", sans-serif;
+  color: var(--light-color);
+  font-weight: 300;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--body-background);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: all 0 5s;
+}
+
+h1,
+h2 {
+  cursor: default;
+  color: var(--light-color);
+}
+
+.info {
+  text-align: center;
+  width: 25rem;
+}
+
+.info-title {
+  font-size: 4rem;
+}
+
+.info-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 2rem 0;
+  border-radius: 1rem;
+  background-color: rgb(196, 204, 218);
+  backdrop-filter: blur(20rem);
+  font-size: 1rem;
+  font-weight: 300;
+  transition: all 0.4s;
+}
+
+.info-player-icon {
+  height: 3rem;
+  width: 3rem;
+}
+
+.info-player-highlight {
+  background-color: var(--light-shade);
+}
+
+.player-win {
+  background-color: var(--win);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 40rem;
+  width: 40rem;
+  grid-gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--accent-color);
+  backdrop-filter: blur(20rem);
+}
+
+.grid__square {
+  background-color: rgba(240, 248, 255, 0.8);
+  backdrop-filter: blur(20rem);
+  border-radius: 1rem;
+  transition: all 0.3s;
+}
+
+.grid__square:hover {
+  cursor: pointer;
+  background-color: rgb(97, 129, 255);
+}
+
+.grid__square-used {
+  transition: all 0 3s;
+}
+.grid__square-used:hover {
+  cursor: not-allowed;
+  background-color: rgba(240, 248, 255, 0.8);
+}
+
+.tie {
+  background-color: var(--light-shade);
+}
+
+.win {
+  background-color: var(--win);
+}
+
+.cross {
+  background-image: url(../Assets/cross.png);
+}
+
+.circle {
+  background-image: url(../Assets/circle.png);
+}
+
+.cross,
+.circle {
+  background-size: cover;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25rem;
+}
+
+.instructions-text {
+  text-align: center;
+  margin-bottom: 2rem;
+  height: 2rem;
+}
+
+.instructions-btn,
+.modal-btn {
+  cursor: pointer;
+  width: 14rem;
+  padding: 1rem 1rem;
+  font-size: 2rem;
+  border-radius: 2rem;
+  color: var(--light-color);
+  background-color: var(--accent-color);
+  border: 0.1rem solid var(--light-color);
+  box-shadow: 3px 3px 14.5px 3px rgba(10, 10, 10, 0.35);
+  transition: all 0.2s;
+}
+
+.instructions-btn:active,
+.modal-btn:active {
+  box-shadow: none;
+  transform: translateY(0.1rem);
+}
+
+.instructions-btn:hover,
+.modal-btn:hover {
+  background-color: rgb(44, 53, 89);
+}
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.397);
+  display: none;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 45%;
+  width: 35%;
+  border-radius: 2rem;
+  background-color: rgba(85, 85, 85, 0.295);
+  backdrop-filter: blur(3rem);
+  border: 0.1rem solid var(--light-color);
+}
+
+.modal-text {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.player1-name,
+.player2-name {
+  color: var(--light-color);
+  background-color: rgba(85, 85, 85, 0.295);
+  backdrop-filter: blur(10rem);
+  height: 3rem;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 0.1rem solid var(--accent-color);
+}
+
+.player1-name::placeholder,
+.player2-name::placeholder {
+  color: var(--light-color);
+  opacity: 0.5;
+  font-style: italic;
+}

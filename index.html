@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Styles/style.css" />
+    <link rel="stylesheet" href="Styles/queries.css" />
+    <link rel="icon" href="Assets/circle.png" />
+    <title>TicTacToe | Nikesh Cohen</title>
+  </head>
+  <body>
+    <div class="info">
+      <h2 class="info-title">Tic Tac Toe</h2>
+      <div id="info-player-1" class="info-player">
+        <img
+          src="Assets/cross.png"
+          alt="player 1 icon"
+          class="info-player-icon"
+        />
+        <h1 class="info-player1-name">Player 1</h1>
+        <h1>:</h1>
+        <h1 class="info-player1-score">0</h1>
+      </div>
+      <div id="info-player-2" class="info-player">
+        <img
+          src="Assets/circle.png"
+          alt="player 2 icon"
+          class="info-player-icon"
+        />
+        <h1 class="info-player2-name">Player 2</h1>
+        <h1>:</h1>
+        <h1 class="info-player2-score">0</h1>
+      </div>
+    </div>
+    <div class="grid">
+      <div id="grid__square-1" class="grid__square"></div>
+      <div id="grid__square-2" class="grid__square"></div>
+      <div id="grid__square-3" class="grid__square"></div>
+      <div id="grid__square-4" class="grid__square"></div>
+      <div id="grid__square-5" class="grid__square"></div>
+      <div id="grid__square-6" class="grid__square"></div>
+      <div id="grid__square-7" class="grid__square"></div>
+      <div id="grid__square-8" class="grid__square"></div>
+      <div id="grid__square-9" class="grid__square"></div>
+    </div>
+    <div class="instructions">
+      <h2 class="instructions-text"></h2>
+      <button class="instructions-btn">Start Game</button>
+    </div>
+    <div class="modal">
+      <form class="modal-content">
+        <h2 class="modal-text">Enter player names</h2>
+        <input
+          type="text"
+          class="player1-name"
+          placeholder="Player 1..."
+          maxlength="8"
+          autofocus
+          required
+          oninvalid="this.setCustomValidity('Enter Player 1 name here')"
+        />
+        <input
+          type="text"
+          class="player2-name"
+          placeholder="Player 2.."
+          maxlength="8"
+          required
+          oninvalid="this.setCustomValidity('Enter Player 2 name here')"
+        />
+        <input type="submit" value="Continue" class="modal-btn" />
+      </form>
+    </div>
+
+    <script src="Javascript/script.js"></script>
+  </body>
+</html>
