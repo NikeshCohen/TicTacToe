@@ -42,6 +42,7 @@ let NewGame = false;
 /////////////////  Game Functions  /////////////////
 
 ////// Active Player Logic //////
+
 const toggleActivePlayer = () => {
   playerOneNameBanner.classList.toggle("info-player-highlight");
   playerTwoNameBanner.classList.toggle("info-player-highlight");
@@ -59,6 +60,7 @@ const findNextPlayer = () => {
     return playerOneNameBanner.classList.add("info-player-highlight");
   }
 };
+
 ////// Square Event Listener //////
 
 function addSquareClick() {
@@ -86,6 +88,7 @@ function squareClick() {
 }
 
 ////// Player Logic //////
+
 const incrementMove = () => {
   move++;
 
